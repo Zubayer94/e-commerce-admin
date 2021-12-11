@@ -16,10 +16,12 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.7.0",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.5.0",
     "@testing-library/user-event": "7.2.1",
     "@windmill/react-ui": "0.3.1",
+    "axios": "^0.24.0",
     "chart.js": "2.9.3",
     "classnames": "2.2.6",
     "faker": "4.1.0",
@@ -27,9 +29,11 @@
     "react-chartjs-2": "2.9.0",
     "react-dom": "^16.13.1",
     "react-focus-lock": "2.4.0",
+    "react-redux": "^7.2.6",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
-    "react-transition-group": "4.4.1"
+    "react-transition-group": "4.4.1",
+    "redux": "^4.1.2"
   },
   "devDependencies": {
     "@release-it/conventional-changelog": "1.1.4",
