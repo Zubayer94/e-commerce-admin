@@ -16,12 +16,10 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password}))
-    console.log('submitted');
-    // userLogin(email, password)
-    //   .then(() => {
-    //     history.push('/');
-    //   })
-    //   .catch(err => console.log(err))
+      .then(() => {
+        history.push('/app');
+      })
+      .catch(err => console.log(err))
   }
   
   return (

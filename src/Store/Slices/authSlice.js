@@ -3,17 +3,16 @@ import axios from 'axios';
 
 const initialState = {
     authUser: {},
-    // isLoggedIn: !!JSON.parse(localStorage.getItem('user'))?.token,
-    isLoggedIn: false,
+    isLoggedIn: !!JSON.parse(localStorage.getItem('user'))?.token,
     isloading: false,
     error: null,
 }
 export const login = createAsyncThunk(
     'auth/login',
-    (payload) => {
+    async (payload) => {
         try {
             console.log('got hit!');
-            const response = axios.post('/login', payload)
+            const response = await axios.post('/login', payload)
             return response.data
         } catch (error) {
             throw Error(error)
@@ -31,17 +30,17 @@ const authSlice = createSlice({
     },
     extraReducers: {
         [login.pending]: (state, action) => {
-            state.isLoggedIn = true
+            state.isloading = true
             state.error = null
         },
         [login.fulfilled]: (state, action) => {
-            state.isLoggedIn = false 
-            state.error = null
+            state.isloading = false 
             state.authUser = action.payload
             localStorage.setItem('user', JSON.stringify(action.payload));
+            state.error = null
         },
         [login.rejected]: (state, action) => {
-            state.isLoggedIn = false 
+            state.isloading = false 
             state.error = action.error.message
         }
     }
