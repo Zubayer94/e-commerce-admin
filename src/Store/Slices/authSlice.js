@@ -61,8 +61,6 @@ const authSlice = createSlice({
         },
         [register.fulfilled]: (state, action) => {
             state.isloading = false 
-            // state.authUser = action.payload
-            // localStorage.setItem('user', JSON.stringify(action.payload));
             state.error = null
         },
         [register.rejected]: (state, action) => {

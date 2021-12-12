@@ -8,6 +8,7 @@ import { Label, Input, Button } from '@windmill/react-ui'
 import { login } from '../Store/Slices/authSlice';
 
 function Login() {
+
   const history = useHistory();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,6 +17,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(login({ email, password}))
+      .unwrap()
       .then(() => {
         history.push('/app');
       })

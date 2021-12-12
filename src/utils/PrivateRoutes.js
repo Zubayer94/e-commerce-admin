@@ -2,8 +2,9 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
-const privateRoutes = ({ children, ...rest }) => {
-    const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+const PrivateRoutes = ({ children, ...rest }) => {
+    const isLoggedIn = useSelector(state => state.entities.auth.isLoggedIn)
+    
     return (
         <Route
             {...rest}
@@ -23,4 +24,4 @@ const privateRoutes = ({ children, ...rest }) => {
     );
 };
 
-export default privateRoutes;
+export default PrivateRoutes;

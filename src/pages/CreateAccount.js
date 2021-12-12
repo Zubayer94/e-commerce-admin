@@ -1,27 +1,29 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 
 import ImageLight from '../assets/img/create-account-office.jpeg'
 import ImageDark from '../assets/img/create-account-office-dark.jpeg'
 import { Input, Label, Button } from '@windmill/react-ui'
+import { register } from '../Store/Slices/authSlice';
 
 function Login() {
 
-  // const history = useHistory();
+  const dispatch = useDispatch()
+  const history = useHistory();
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [password_confirmation, setPassword_confirmation] = useState('')
 
-
   const handlRegister = (e) => {
     e.preventDefault();
-    // let userinfo = { name, email, website, password, password_confirmation }
-    // userRegister(userinfo)
-    //   .then(() => {
-    //     history.push('/');
-    //   })
-    //   .catch(err => console.log(err))
+    dispatch(register({ name, email, password, password_confirmation }))
+      .unwrap()
+      .then(() => {
+        history.push('/login');
+      })
+      .catch(err => console.log(err))
   }
 
   return (

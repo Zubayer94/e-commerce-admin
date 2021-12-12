@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Redirect, Route } from 'react-router-dom';
 
-const publicRoute = ({ children, ...rest }) => {
-    const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
+const PublicRoutes = ({ children, ...rest }) => {
+    const isLoggedIn = useSelector(state => state.entities.auth.isLoggedIn)
+
     return (
         <Route
             {...rest}
@@ -11,7 +12,7 @@ const publicRoute = ({ children, ...rest }) => {
                 !!isLoggedIn ? (
                     <Redirect
                         to={{
-                            pathname: '/app',
+                            pathname: '/',
                             state: { from: location }
                         }}
                     />
@@ -23,4 +24,4 @@ const publicRoute = ({ children, ...rest }) => {
     );
 };
 
-export default publicRoute;
+export default PublicRoutes;
