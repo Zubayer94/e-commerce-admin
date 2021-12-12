@@ -1,16 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from 'axios';
 
 const initialState = {
-    authUser: [],
-    isLoggedIn: !!JSON.parse(localStorage.getItem('user'))?.token,
+    authUser: {},
+    // isLoggedIn: !!JSON.parse(localStorage.getItem('user'))?.token,
+    isLoggedIn: false,
     isloading: false,
     error: null,
 }
 export const login = createAsyncThunk(
     'auth/login',
-    async (payload) => {
+    (payload) => {
         try {
-            const response = await axiospost('/login', payload)
+            console.log('got hit!');
+            const response = axios.post('/login', payload)
             return response.data
         } catch (error) {
             throw Error(error)
@@ -34,8 +37,8 @@ const authSlice = createSlice({
         [login.fulfilled]: (state, action) => {
             state.isLoggedIn = false 
             state.error = null
-            state.authUser = action.payload.data
-            localStorage.setItem('user', JSON.stringify(action.payload.data));
+            state.authUser = action.payload
+            localStorage.setItem('user', JSON.stringify(action.payload));
         },
         [login.rejected]: (state, action) => {
             state.isLoggedIn = false 

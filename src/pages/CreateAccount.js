@@ -3,12 +3,11 @@ import { Link, useHistory } from 'react-router-dom'
 
 import ImageLight from '../assets/img/create-account-office.jpeg'
 import ImageDark from '../assets/img/create-account-office-dark.jpeg'
-import { GithubIcon, TwitterIcon } from '../icons'
 import { Input, Label, Button } from '@windmill/react-ui'
 
 function Login() {
 
-  const history = useHistory();
+  // const history = useHistory();
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

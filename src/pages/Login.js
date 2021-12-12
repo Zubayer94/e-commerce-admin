@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom'
 
 import ImageLight from '../assets/img/login-office.jpeg'
 import ImageDark from '../assets/img/login-office-dark.jpeg'
 import { Label, Input, Button } from '@windmill/react-ui'
+import { login } from '../Store/Slices/authSlice';
 
 function Login() {
   const history = useHistory();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(login({ email, password}))
     console.log('submitted');
     // userLogin(email, password)
     //   .then(() => {
