@@ -20,8 +20,8 @@ function App() {
           </PublicRoutes>
           <PublicRoutes exact path="/create-account" >
             <CreateAccount />
-            {/* <Route path="/login" component={Login} /> */}
           </PublicRoutes>
+          {/* <Route path="/login" component={Login} /> */}
           {/* <Route path="/forgot-password" component={ForgotPassword} /> */}
 
           {/* Place new routes over this */}
