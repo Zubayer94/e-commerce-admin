@@ -5,28 +5,28 @@ const initialState = {
     authUser: {},
     isLoggedIn: !!JSON.parse(localStorage.getItem('user'))?.token,
     isloading: false,
-    error: null,
+    authError: null,
 }
 export const login = createAsyncThunk(
     'auth/login',
-    async (payload) => {
+    async (payload, { rejectWithValue }) => {
         try {
             const response = await axios.post('/login', payload)
             return response.data
         } catch (error) {
-            throw Error(error)
+            return rejectWithValue(error.response.data)
         }
     }
 )
 export const register = createAsyncThunk(
     'auth/register',
-    async (payload) => {
+    async (payload, { rejectWithValue }) => {
         try {
-            console.log('got hit!');
             const response = await axios.post('/register', payload)
             return response.data
         } catch (error) {
-            throw Error(error)
+            // throw Error(error)
+            return rejectWithValue(error.response.data)
         }
     }
 )
@@ -42,30 +42,31 @@ const authSlice = createSlice({
     extraReducers: {
         [login.pending]: (state) => {
             state.isloading = true
-            state.error = null
+            state.authError = null
         },
         [login.fulfilled]: (state, action) => {
             state.isloading = false 
+            state.isLoggedIn = true
             state.authUser = action.payload
             localStorage.setItem('user', JSON.stringify(action.payload));
-            state.error = null
+            state.authError = null
         },
         [login.rejected]: (state, action) => {
             state.isloading = false 
-            state.error = action.error.message
+            state.authError = action.payload.message
         },
 
         [register.pending]: (state) => {
             state.isloading = true
-            state.error = null
+            state.authError = null
         },
         [register.fulfilled]: (state, action) => {
             state.isloading = false 
-            state.error = null
+            state.authError = null
         },
         [register.rejected]: (state, action) => {
             state.isloading = false 
-            state.error = action.error.message
+            state.authError = action.payload.message
         },
 
     }

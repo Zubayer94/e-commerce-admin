@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ImageLight from '../assets/img/create-account-office.jpeg'
 import ImageDark from '../assets/img/create-account-office-dark.jpeg'
 import { Input, Label, Button } from '@windmill/react-ui'
 import { register } from '../Store/Slices/authSlice';
+import Validation from '../utils/Validation';
 
 function Login() {
 
@@ -15,6 +16,9 @@ function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [password_confirmation, setPassword_confirmation] = useState('')
+  const [formError, setFormError] = useState('')
+
+  let authError = useSelector(state => state.entities.auth.authError)
 
   const handlRegister = (e) => {
     e.preventDefault();
@@ -23,7 +27,19 @@ function Login() {
       .then(() => {
         history.push('/login');
       })
-      .catch(err => console.log(err))
+      .catch(rejectedValueOrSerializedError => setFormError(rejectedValueOrSerializedError))
+  }
+
+  const getError = (key) => {
+    return (formError[key] !== undefined) ? formError[key][0] : null;
+  }
+
+  const clearError = (key) => {
+    if (key) {
+      delete formError[key];
+      return;
+    }
+    setFormError('');
   }
 
   return (
@@ -49,23 +65,31 @@ function Login() {
               <h1 className="mb-4 text-xl font-semibold text-gray-700 dark:text-gray-200">
                 Create account
               </h1>
+              {!!authError ? <span className="align-middle text-red-600">{authError}</span> : null}
               <form onSubmit={handlRegister} >
                 <Label>
                   <span>Name</span>
                   <Input className="mt-1" onChange={(e) => {setName(e.target.value)}} value={name} type="text" placeholder="John Doe" />
                 </Label>
+                <Validation errorText={getError('name')} />
+
                 <Label>
                   <span>Email</span>
                   <Input className="mt-1" onChange={(e) => {setEmail(e.target.value)}} value={email} type="email" placeholder="john@doe.com" />
                 </Label>
+                <Validation errorText={getError('email')} />
+
                 <Label className="mt-4">
                   <span>Password</span>
                   <Input className="mt-1" onChange={(e) => {setPassword(e.target.value)}} value={password} placeholder="***************" type="password" />
                 </Label>
+                <Validation errorText={getError('password')} />
+
                 <Label className="mt-4">
                   <span>Confirm password</span>
                   <Input className="mt-1" onChange={(e) => { setPassword_confirmation(e.target.value)}} value={password_confirmation} placeholder="***************" type="password" />
                 </Label>
+                <Validation errorText={getError('password')} />
 
                 <Button block className="mt-4" type='submit' >
                   Create account
