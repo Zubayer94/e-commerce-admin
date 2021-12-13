@@ -2,7 +2,7 @@ import React from 'react'
 
 import PageTitle from '../../components/Typography/PageTitle'
 
-function productUpdate() {
+function ProductUpdate() {
   return (
     <>
       <PageTitle>Product Edit</PageTitle>
@@ -10,4 +10,4 @@ function productUpdate() {
   )
 }
 
-export default productUpdate
+export default ProductUpdate

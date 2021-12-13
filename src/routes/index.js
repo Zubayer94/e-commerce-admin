@@ -3,8 +3,8 @@ import { lazy } from 'react'
 // use lazy for better code splitting, a.k.a. load faster
 const Dashboard = lazy(() => import('../pages/Dashboard'))
 const Product = lazy(() => import('../pages/Product/Product'))
-const productCreate = lazy(() => import('../pages/Product/productCreate'))
-const productUpdate = lazy(() => import('../pages/Product/productUpdate'))
+const ProductCreate = lazy(() => import('../pages/Product/ProductCreate'))
+const ProductUpdate = lazy(() => import('../pages/Product/ProductUpdate'))
 
 /**
  * ⚠ These are internal routes!
@@ -27,11 +27,11 @@ const routes = [
   },
   {
     path: '/products-create', // the url
-    component: productCreate, // view rendered
+    component: ProductCreate, // view rendered
   },
   {
     path: '/products-update', // the url
-    component: productUpdate, // view rendered
+    component: ProductUpdate, // view rendered
   },
 ]
 

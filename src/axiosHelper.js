@@ -7,8 +7,8 @@ window.axios.defaults.headers.common = {
 
 window.axios.interceptors.request.use(
     (config) => {
-        let token = 'sncjksckjsjkcsjkcksjchsjkchsjc'
-        // let token = JSON.parse(localStorage.getItem('user'))?.token
+        // let token = 'sncjksckjsjkcsjkcksjchsjkchsjc'
+        let token = JSON.parse(localStorage.getItem('user'))?.token
 
         if (token) {
             config.headers.Authorization = `Bearer ${token}`

@@ -144,7 +144,7 @@ function Tables() {
                 <TableCell>
                   <span className="text-sm">$ {user.amount}</span>
                 </TableCell>
-                <TableCell>
+                <TableCell> 
                   <Badge type={user.status}>{user.status}</Badge>
                 </TableCell>
                 <TableCell>

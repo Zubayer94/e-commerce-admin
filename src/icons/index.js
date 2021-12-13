@@ -26,6 +26,9 @@ import { ReactComponent as DropdownIcon } from './dropdown.svg'
 import { ReactComponent as OutlinePersonIcon } from './outlinePerson.svg'
 import { ReactComponent as OutlineCogIcon } from './outlineCog.svg'
 import { ReactComponent as OutlineLogoutIcon } from './outlineLogout.svg'
+import { ReactComponent as AscIcon } from './asc.svg'
+import { ReactComponent as DescIcon } from './desc.svg'
+import { ReactComponent as BackspaceIcon } from './backspace.svg'
 
 export {
   ButtonsIcon,
@@ -56,4 +59,7 @@ export {
   OutlinePersonIcon,
   OutlineCogIcon,
   OutlineLogoutIcon,
+  AscIcon,
+  DescIcon,
+  BackspaceIcon
 }
