@@ -25,7 +25,7 @@ function Order() {
   const dispatch = useDispatch()
   const ordersPagination = useSelector(state => state.entities.order.ordersPagination)
   const orders = useSelector(state => state.entities.order.orders)
-  const [title, setTitle] = useState('')
+  const [uid, setUID] = useState('')
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [status, setStatus] = useState('')
   const [unit, setUnit] = useState('')
@@ -84,11 +84,11 @@ function Order() {
   }
 
   const getAllOrders = (page) => {
-    dispatch(getOrders({ page: page, length: 15, title } ))
+    dispatch(getOrders({ page: page, length: 15, uid } ))
   }
   useEffect(() => {
     getAllOrders(ordersPagination.current_page)
-  }, [title])
+  }, [uid])
 
   return (
     <>
@@ -96,7 +96,7 @@ function Order() {
 
       <div className="grid grid-cols-1 mb-2">
         <div className="col-start-1 col-end-8" >
-          <Input placeholder="Search Order by Title" onChange={e => setTitle(e.target.value)} />
+          <Input placeholder="Search Order UID" onChange={e => setUID(e.target.value)} />
         </div>
       </div>
 
