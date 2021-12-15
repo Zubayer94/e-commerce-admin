@@ -30,7 +30,7 @@ const routes = [
     component: ProductCreate, // view rendered
   },
   {
-    path: '/products-update', // the url
+    path: '/products-update/:id', // the url
     component: ProductUpdate, // view rendered
   },
 ]

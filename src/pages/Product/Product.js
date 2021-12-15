@@ -29,7 +29,7 @@ function Product() {
   const dispatch = useDispatch()
   const [title, setTitle] = useState('')
   
-  const reidrectProductEdit = (id) => history.push(`/app/products-update`) // history.push(`/products-update/${id}`)
+  const reidrectProductEdit = (id) => history.push(`/app/products-update/${id}`) // history.push(`/products-update/${id}`)
 
   const handleDelete = (id) => {
     swalDel('This product would be deleted permanently!')
