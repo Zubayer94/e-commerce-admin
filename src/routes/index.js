@@ -5,6 +5,9 @@ const Dashboard = lazy(() => import('../pages/Dashboard'))
 const Product = lazy(() => import('../pages/Product/Product'))
 const ProductCreate = lazy(() => import('../pages/Product/ProductCreate'))
 const ProductUpdate = lazy(() => import('../pages/Product/ProductUpdate'))
+const Category = lazy(() => import('../pages/Category/Category'))
+const CategoryCreate = lazy(() => import('../pages/Category/CategoryCreate'))
+const CategoryUpdate = lazy(() => import('../pages/Category/CategoryUpdate'))
 
 /**
  * ⚠ These are internal routes!
@@ -32,6 +35,18 @@ const routes = [
   {
     path: '/products-update/:id', // the url
     component: ProductUpdate, // view rendered
+  },
+  {
+    path: '/categories', // the url
+    component: Category, // view rendered
+  },
+  {
+    path: '/category-create', // the url
+    component: CategoryCreate, // view rendered
+  },
+  {
+    path: '/category-update/:id', // the url
+    component: CategoryUpdate, // view rendered
   },
 ]
 

@@ -28,6 +28,22 @@ const routes = [
     ],
   },
   
+  {
+    icon: 'PagesIcon',
+    name: 'Category',
+    routes: [
+      // submenu
+      {
+        path: '/app/categories',
+        name: 'Category List',
+      },
+      {
+        path: '/app/category-create',
+        name: 'Category Create',
+      },
+    ],
+  },
+  
   // {
   //   icon: 'PagesIcon',
   //   name: 'Pages',
