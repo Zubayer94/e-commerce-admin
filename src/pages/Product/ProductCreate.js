@@ -11,7 +11,7 @@ function ProductCreate() {
   const [title, setTitle] = useState('')
   const [price, setPrice] = useState('')
   const [qty, setQty] = useState('')
-  const [categoryId, setCategoryId] = useState('')
+  const [category_id, setCategoryId] = useState('')
   const [image, setImage] = useState('')
   const [description, setDescription] = useState('')
   const [allCategories, setAllCategories] = useState('')
@@ -34,7 +34,7 @@ function ProductCreate() {
 
   const createProduct = async (e) => {
     e.preventDefault();
-    await axios.post('/products', { title, price, qty, categoryId, image, description })
+    await axios.post('/products', { title, price, qty, category_id, image, description })
       .then(_ => {
         Toast.fire({
           icon: 'success',
