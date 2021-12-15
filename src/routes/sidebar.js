@@ -25,10 +25,6 @@ const routes = [
         path: '/app/products-create',
         name: 'Product Create',
       },
-      {
-        path: '/app/products-Update',
-        name: 'Product Update',
-      },
     ],
   },
   

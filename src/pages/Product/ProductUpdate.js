@@ -93,7 +93,7 @@ function ProductUpdate({ match }) {
 
           <Label className="mt-4">
             <span className='mr-2'>Product Current Image</span>
-            <img className="inline w-1/4 h-1/4" src={showImage} alt="Product Current Image"></img>
+            <img className="inline w-1/4 h-1/4" src={showImage} alt="Product"></img>
           </Label>
 
           <Label className="mt-4">

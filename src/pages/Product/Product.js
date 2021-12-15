@@ -9,14 +9,11 @@ import {
   TableRow,
   TableFooter,
   TableContainer,
-  Badge,
-  Avatar,
   Button,
   Input,
-  Label,
   Pagination,
 } from '@windmill/react-ui'
-import { EditIcon, TrashIcon, AscIcon, DescIcon, SearchIcon, BackspaceIcon} from '../../icons';
+import { EditIcon, TrashIcon, AscIcon, DescIcon} from '../../icons';
 import PageTitle from '../../components/Typography/PageTitle'
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../Store/Slices/productSlice';
@@ -98,7 +95,9 @@ function Product() {
                   </TableCell>
 
                   <TableCell>
-                    <span className="text-sm">Image</span>
+                    <span className="text-sm">
+                      <img className="inline w-1/3 h-1/3" src={product.image} alt="Product Image"></img>
+                    </span>
                   </TableCell>
 
                   <TableCell>
