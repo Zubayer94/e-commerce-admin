@@ -48,7 +48,7 @@ function Product() {
   }
 
   const getAllProducts = (page) => {
-    dispatch(getProducts({ page: page, title } ))
+    dispatch(getProducts({ page: page, length: 15, title } ))
   }
   useEffect(() => {
     getAllProducts(productsPagination.current_page)
