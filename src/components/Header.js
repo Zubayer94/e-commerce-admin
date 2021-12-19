@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { SidebarContext } from '../context/SidebarContext'
+import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
 import {
   SearchIcon,
   MoonIcon,
@@ -11,8 +13,13 @@ import {
   OutlineLogoutIcon,
 } from '../icons'
 import { Avatar, Input, Dropdown, DropdownItem, WindmillContext } from '@windmill/react-ui'
+import { Toast } from '../utils/SwalUti';
+import axios from 'axios';
+import { removeAuthInfo } from '../Store/Slices/authSlice';
 
 function Header() {
+  const history = useHistory()
+  const dispatch = useDispatch()
   const { mode, toggleMode } = useContext(WindmillContext)
   const { toggleSidebar } = useContext(SidebarContext)
 
@@ -25,6 +32,22 @@ function Header() {
 
   function handleProfileClick() {
     setIsProfileMenuOpen(!isProfileMenuOpen)
+  }
+
+  const logout = () => {
+    axios.get('/logout')
+      .then(_ => {
+        Toast.fire({
+          icon: 'success',
+          title: 'Logged out successfully'
+        })
+        localStorage.removeItem('user')
+        dispatch(removeAuthInfo())
+        history.push(`/`)
+      })
+      .catch(error => {
+        console.log(error);
+      })
   }
 
   return (
@@ -96,7 +119,7 @@ function Header() {
                 <OutlineCogIcon className="w-4 h-4 mr-3" aria-hidden="true" />
                 <span>Settings</span>
               </DropdownItem> */}
-              <DropdownItem onClick={() => alert('Log out!')}>
+              <DropdownItem onClick={() => logout()}>
                 <OutlineLogoutIcon className="w-4 h-4 mr-3" aria-hidden="true" />
                 <span>Log out</span>
               </DropdownItem>
