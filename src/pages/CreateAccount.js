@@ -14,6 +14,7 @@ function Login() {
   const history = useHistory();
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [is_admin, setIsAdmin] = useState(1)
   const [password, setPassword] = useState('')
   const [password_confirmation, setPassword_confirmation] = useState('')
   const [formError, setFormError] = useState('')
@@ -22,7 +23,7 @@ function Login() {
 
   const handlRegister = (e) => {
     e.preventDefault();
-    dispatch(register({ name, email, password, password_confirmation }))
+    dispatch(register({ name, email, password, password_confirmation, is_admin }))
       .unwrap()
       .then(() => {
         history.push('/login');
