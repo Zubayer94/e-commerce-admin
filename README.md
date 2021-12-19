@@ -1,4 +1,4 @@
-<p align="center">
+<!-- <p align="center">
     <a href="https://windmillui.com/dashboard-react">
       <img alt="Windmill Dashboard React" width="600" src=".github/windmill-dashboard-react.png">
     </a><br>
@@ -124,8 +124,10 @@ If you're asking where does this `/app` come from, it is from this line inside `
 
 ---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). -->
 
+# e-commerce-admin
+## e-commerce-admin to handle products, category, orders and maintain e-commerce. Created with the help of  windmill-dashboard-react dashboard and of course react & redux.
 ## Available Scripts
 
 In the project directory, you can run:
